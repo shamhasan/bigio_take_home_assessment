@@ -13,7 +13,7 @@ To exceed the basic requirements, this project also implements the suggested add
 * **Local Database (SQLite)**: A feature to add and remove characters from a local "Favorites" list.
 * **Unit Testing**: Implementation of unit tests for business logic and state management.
 
-[cite_start]This project demonstrates clean, structured code, proper indentation, and efficient resource management.
+This project demonstrates clean, structured code, proper indentation, and efficient resource management.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -49,25 +49,24 @@ The project follows a **Feature-First Clean Architecture** structure:
 
 ```text
 lib/
-├── core/                   # Core functionality (Error handling, Utils, Constants)
-│   ├── error/              # Failures & Exceptions
-│   ├── usecases/           # Base UseCase class
-│   └── utils/              # RequestState enum, constants
+├── core/                   # Core functionality
+│   ├── constants/          # Application Constants (API Endpoints, Routes, Assets)
+│   ├── error/              # Failures (Failure classes) & Exceptions
+│   └── utils/              # RequestState Enum, Extensions, Common Helpers
 ├── features/
 │   └── character/          # Feature: Character
-│       ├── data/           # Data Layer
-│       │   ├── datasources/    # Remote (API) & Local (SQLite) Data Sources
-│       │   ├── models/         # JSON/DB Models (extends Entity)
+│       ├── data/           # Data Layer (Remote/Local Data)
+│       │   ├── datasources/    # RemoteDataSource & LocalDataSource
+│       │   ├── models/         # API Response & DB Models (extends Entity)
 │       │   └── repositories/   # Repository Implementation
-│       ├── domain/         # Domain Layer (Business Logic)
+│       ├── domain/         # Domain Layer (Pure Business Logic)
 │       │   ├── entities/       # Core Business Objects
 │       │   ├── repositories/   # Repository Interfaces (Contracts)
-│       │   └── usecases/       # Logic for specific actions (Get, Search, Toggle Fav)
+│       │   └── usecases/       # UseCases (GetCharacters, SearchCharacters, etc.)
 │       └── presentation/   # Presentation Layer (UI)
-│           ├── pages/          # Screens (Home, Detail, Search, Favorite)
-│           ├── provider/       # State Management (ChangeNotifier)
-│           └── widgets/        # Reusable Widgets
-├── injection_container.dart # Dependency Injection Setup (Service Locator)
+│           ├── pages/          # Screens (Home, Detail, Search)
+│           └── provider/       # State Management (ChangeNotifier)
+├── injection_container.dart # Dependency Injection Setup (GetIt)
 └── main.dart               # Entry point
 ```
 
@@ -81,6 +80,9 @@ To run the tests, execute the following command in the terminal:
 ```bash
 flutter test
 ```
+## Test result preview
+<img width="1920" height="1080" alt="Screenshot (193)" src="https://github.com/user-attachments/assets/14e1b34a-19ac-4e29-93f4-ae4757ad5b74" />
+
 
 ## <a name="apk-link"></a> APK Link
 You can download the compiled release APK to test the application directly on an Android device:
