@@ -26,7 +26,7 @@ This project demonstrates clean, structured code, proper indentation, and effici
 ## <a name="features"></a> Features
 - **Character List**: Displays a paginated list of characters fetched from the Rick and Morty API.
 - **Search Feature**: Real-time search functionality with debounce to find specific characters.
-- **Character Detail**: View detailed attributes of a character (Status, Species, Gender, Origin, Location).
+- **Character Detail**: View detailed attributes of a character (Photo, Species, Gender, Origin, Location).
 - **Favorite System**: Save and remove characters from a local database (SQLite/Sqflite).
 - **Offline Support**: Access saved favorite characters even without an internet connection.
 - **Error Handling**: Proper error messages for Server Failures or Database Failures.
