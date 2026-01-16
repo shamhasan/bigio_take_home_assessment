@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Rick and Morty's Wiki "),
-        // centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {

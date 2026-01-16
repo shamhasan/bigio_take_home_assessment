@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bigio_test_app/core/error/failures.dart';
 import 'package:bigio_test_app/core/utils/request_state.dart';
 import 'package:bigio_test_app/features/character/domain/entities/character_entity.dart';

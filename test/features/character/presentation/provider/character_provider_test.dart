@@ -10,13 +10,12 @@ import 'package:bigio_test_app/features/character/presentation/provider/characte
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-
 class MockGetCharacters extends Mock implements GetCharacters {
   @override
   Future<List<CharacterEntity>> execute() {
     return super.noSuchMethod(
       Invocation.method(#execute, []),
-      returnValue: Future.value(<CharacterEntity>[]), 
+      returnValue: Future.value(<CharacterEntity>[]),
       returnValueForMissingStub: Future.value(<CharacterEntity>[]),
     );
   }
@@ -45,11 +44,11 @@ class MockToggleFavorites extends Mock implements ToggleFavorites {
 }
 
 class MockGetFavorites extends Mock implements GetFavorites {
-   @override
+  @override
   Future<List<CharacterEntity>> execute() {
     return super.noSuchMethod(
       Invocation.method(#execute, []),
-      returnValue: Future.value(<CharacterEntity>[]), 
+      returnValue: Future.value(<CharacterEntity>[]),
       returnValueForMissingStub: Future.value(<CharacterEntity>[]),
     );
   }
@@ -102,40 +101,49 @@ void main() {
   final tCharacterList = [tCharacter];
 
   group('CharacterProvider Test', () {
-    test('harus mengubah state menjadi Loading lalu Loaded saat data berhasil diambil', () async {
-      // ARRANGE
-      when(mockGetCharacters.execute()).thenAnswer((_) async => tCharacterList);
+    test(
+      'harus mengubah state menjadi Loading lalu Loaded saat data berhasil diambil',
+      () async {
+        when(
+          mockGetCharacters.execute(),
+        ).thenAnswer((_) async => tCharacterList);
 
-      // ACT
-      final future = provider.fetchCharacters();
-      expect(provider.homeState, RequestState.loading);
-      await future;
+        final future = provider.fetchCharacters();
+        expect(provider.homeState, RequestState.loading);
+        await future;
 
-      // ASSERT
-      expect(provider.homeState, RequestState.loaded);
-      expect(provider.homeCharacters, tCharacterList);
-    });
+        expect(provider.homeState, RequestState.loaded);
+        expect(provider.homeCharacters, tCharacterList);
+      },
+    );
 
-    test('harus mengubah state menjadi Error saat terjadi ServerFailure', () async {
-      // ARRANGE
-      when(mockGetCharacters.execute()).thenThrow(ServerFailure('Server Down'));
+    test(
+      'harus mengubah state menjadi Error saat terjadi ServerFailure',
+      () async {
+        when(
+          mockGetCharacters.execute(),
+        ).thenThrow(ServerFailure('Server Down'));
 
-      // ACT
-      await provider.fetchCharacters();
+        await provider.fetchCharacters();
 
-      // ASSERT
-      expect(provider.homeState, RequestState.error);
-      expect(provider.message, 'Server Down');
-    });
+        expect(provider.homeState, RequestState.error);
+        expect(provider.message, 'Server Down');
+      },
+    );
 
-    test('harus mengubah searchState menjadi Loaded saat pencarian berhasil', () async {
+    test(
+      'harus mengubah searchState menjadi Loaded saat pencarian berhasil',
+      () async {
         const tQuery = 'Rick';
-        when(mockSearchCharacters.execute(tQuery)).thenAnswer((_) async => tCharacterList);
+        when(
+          mockSearchCharacters.execute(tQuery),
+        ).thenAnswer((_) async => tCharacterList);
 
         await provider.searchCharacter(tQuery);
 
         expect(provider.searchState, RequestState.loaded);
         expect(provider.searchCharacters, tCharacterList);
-    });
+      },
+    );
   });
 }

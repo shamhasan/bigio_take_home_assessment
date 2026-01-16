@@ -5,7 +5,6 @@ import 'package:bigio_test_app/features/character/data/datasources/character_rem
 import 'package:bigio_test_app/features/character/data/models/character_models.dart';
 import 'package:bigio_test_app/features/character/domain/entities/character_entity.dart';
 import 'package:bigio_test_app/features/character/domain/repositories_interfaces/character_repository_interface.dart';
-// import 'package:dio/dio.dart';
 
 class CharacterRepositoryImplementation
     implements CharacterRepositoryInterface {
