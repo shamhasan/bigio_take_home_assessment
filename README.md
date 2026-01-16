@@ -27,14 +27,14 @@ This project uses the following libraries and tools:
 - **Framework**: Flutter (Dart)
 - **Architecture**: Clean Architecture (Data, Domain, Presentation)
 - **State Management**: [Provider](https://pub.dev/packages/provider)
-- **Networking**: [http](https://pub.dev/packages/http)
+- **Networking**: [dio](https://pub.dev/packages/dio) (Powerful Http Client for Dart)
 - **Local Database**: [sqflite](https://pub.dev/packages/sqflite) & [path](https://pub.dev/packages/path)
 - **Dependency Injection**: [get_it](https://pub.dev/packages/get_it)
 - **Functional Programming**: [dartz](https://pub.dev/packages/dartz) (For `Either<Failure, Type>` handling)
 - **Testing**:
   - [flutter_test](https://api.flutter.dev/flutter/flutter_test/flutter_test-library.html)
   - [mockito](https://pub.dev/packages/mockito) (Mocking dependencies)
-  - [build_runner](https://pub.dev/packages/build_runner) (Code generation)
+
 
 ## <a name="project-structures"></a> Project Structure
 The project follows a **Feature-First Clean Architecture** structure:
@@ -144,8 +144,8 @@ lib/
 
 ## <a name="unit-testing"></a> Unit Testing
 This project includes Unit Tests to ensure the reliability of the business logic and state management. The tests cover:
-1.  **Provider/Bloc Logic**: Verifying initial states, loading states, and success/error states.
-2.  **Repository/UseCases**: Mocking data sources to test data flow.
+1.  **Provider Logic**: Verifying initial states, loading states, and success/error states (ChangeNotifier).
+2.  **Mocking**: Using Mockito with **Manual Mocking** strategy to simulate UseCase responses without hitting the actual API/Database.
 
 To run the tests, execute the following command in the terminal:
 
