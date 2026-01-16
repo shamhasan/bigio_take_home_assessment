@@ -9,7 +9,7 @@ class CharacterEntity extends Equatable {
   final String location;
   final String image;
 
-  CharacterEntity({
+  const CharacterEntity({
     required this.id,
     required this.name,
     required this.species,

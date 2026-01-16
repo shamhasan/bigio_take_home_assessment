@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:bigio_test_app/features/character/domain/entities/character_entity.dart';
 
 class CharacterModels extends CharacterEntity {
-  CharacterModels({
+  const CharacterModels({
     required int id,
     required String name,
     required String species,
